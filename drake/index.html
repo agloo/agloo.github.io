@@ -1,0 +1,70 @@
+<html>
+<head>
+<title> DERSDERS </title>
+<meta name="theme-color" content="#420039">
+<link rel="shortcut icon" href="/cellular.ico" type="image/x-icon"/>
+<!-- SCRIPTS -->
+<script type="text/javascript" src="audio.js"></script>
+<!-- for color-changing background:-->
+<script>
+var wall = {
+    change_colors: function() {
+            setTimeout((function() {
+            var color = 0,
+            colors = ['#b32e7f', '#ffffff', '#4d9cde', '#f84747', '2ec331'];
+
+            setInterval(function() {
+                document.body.style.background = colors[color];
+                color = Math.floor(Math.random() * colors.length)
+            }, 500);
+        }), 6617);
+    }
+}
+</script>
+
+<!-- for falling objects -->
+<script type="text/javascript" SRC="confetti.js"></script>
+
+<!-- for changing title text -->
+<script>
+(function titleScroller(text) {
+    document.title = text;
+    setTimeout(function () {
+        titleScroller(text.substr(1) + text.substr(0, 1));
+      }, 500);
+}("DER$DER$DER$"));
+</script>
+</head>
+
+<!-- CSS I WAS TOO LAZY TO OUTSOURCE -->
+<style>
+*{margin: 0; padding: 0;}
+div.theman {
+	position: absolute;
+    z-index: 1;
+	top: 50%;
+	left:50%;
+	margin-top: -174px;
+	margin-left: -208px;
+}
+</style>
+<body>
+
+<!-- canvas for confetti -->
+<button style="font-size: 130px; width:100%; background: #b32e7f; z-index:2147483647; height:100%;display: block"  onclick="setTimeout('song.init()', 1); setTimeout('call.init()', 1); setTimeout('confetti.timer()', 1); setTimeout('wall.change_colors()', 1); style.display = 'none';">CLICK OR TAP TO GET DRIZZY</button>
+<!-- <canvas id="canvas"></canvas> -->
+<!-- Drake's original width is 87px and he is 104px tall. -->
+<!-- We use the div tag to put our drake in the middle-->
+<div class="theman">
+<img src="thegif.gif" width ="348px" height="416px">
+</div>
+
+<!-- <audio src="theCall.wav"autoplay hidden="true"> -->
+<!-- This javascript delays the main portion of the song which loops so it comes right after our intro. -->
+<!--<audio loop="true" onloadeddata="var audioPlayer = this; setTimeout(function() { audioPlayer.play(); }, 13235);">
+	<source src="theSong.wav" type="audio/wav" />
+</audio>-->
+
+<!--<script SRC="draw.js"></script>-->
+</body>
+</html>
