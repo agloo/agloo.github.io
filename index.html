@@ -1,12 +1,45 @@
-<head>
-  <link rel="stylesheet" type="text/css" href=style.css">
-</head>
-<script type="text/javascript">
-  var random = Math.floor(Math.random() * 60)
-  document.querySelector("#bgtrain > source").src = "site"+random+".webm
-  alert(1)
-</script>
-<body>
-	<video playsinline autoplay muted loop poster="train.bmp" id="bgtrain">
-		<source src="site038.webm" type="video/webm">
-</body>
+<html>
+	<head>
+		<!--<link rel="stylesheet" type="text/css" href=style.css">-->
+		<title> OH MAN HE'S ON A TRAIN </title>
+	</head>
+	<style>
+		h1 {
+			position: absolute;
+			bottom: 40%;
+			font-size: 5rem;
+			left: 5rem;
+			mix-blend-mode: overlay;
+		}
+		vidbox {
+			width: 100%;
+			height: 95%;
+			overflow: hidden;
+		}
+		video {
+			width: 100%;
+			height: 100%;
+		}
+	</style>
+	<script type="text/javascript">
+	  window.onload = function() {
+	    try {
+	      var random = Math.floor(Math.random() * 60);
+	      var newstr = "trains/site"+random+".webm";
+	      var video = document.getElementById("bgtrain");
+	      video.src = newstr;
+	    }
+	     catch(err) {
+	       alert(err);
+	    }
+	  }
+	</script>
+	<body>
+	  <div id=vidbox>
+	  <video playsinline autoplay muted loop poster="trains/train.bmp" id="bgtrain">
+	  	<source src="trains/site38.webm" type="video/webm">
+	  </video>
+	  <h1>PLACEHOLDER</h1>
+	  <div>
+	</body>
+</html>
