@@ -7,7 +7,7 @@
 			position: absolute;
 			top: 33%;
 			left: 5rem;
-            right: 40%;
+            right: 50%;
             transition: top 1s, height 1s ease-out;
         }
         #content:hover {
@@ -15,10 +15,21 @@
             height: 100%;
         }
         h1 {
-            font-size 3rem;
-			mix-blend-mode: overlay;
+            font-size: 2rem;
+            opacity: 1;
         }
-        div:hover p{
+        h1:solid {
+            font-size: 2rem;
+            opacity: 0;
+            display: block;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+
+        }
+        div:hover p {
             opacity: 1;
             transition: opacity 1s linear 1s;
 		}
@@ -52,7 +63,8 @@
 	  </video>
 	  <div id=content>
   	    <h1>THIS IS THE VIEW FROM A TRAIN.</h1>
-        <p>Oh man. Look at this footage. It's so raw. So elegant. So emotionally charged. Wow.</p>
+        <p>Oh man. Look at this footage. It's so raw. So elegant. So emotionally charged. Wow.
+        <a href="drake/index.html">Here</a> is the only other thing on this site.</p>
 	  </div>
 	</body>
 </html>
