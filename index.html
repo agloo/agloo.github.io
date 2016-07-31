@@ -1,6 +1,5 @@
 <html>
 	<head>
-		<!--<link rel="stylesheet" type="text/css" href=style.css">-->
 		<title> OH MAN HE'S ON A TRAIN </title>
 	</head>
 	<style>
@@ -23,15 +22,10 @@
 	</style>
 	<script type="text/javascript">
 	  window.onload = function() {
-	    try {
-	      var random = Math.floor(Math.random() * 60);
-	      var newstr = "trains/site"+random+".webm";
-	      var video = document.getElementById("bgtrain");
-	      video.src = newstr;
-	    }
-	     catch(err) {
-	       alert(err);
-	    }
+	    var random = Math.floor(Math.random() * 60);
+	    var newstr = "trains/site"+random+".webm";
+	    var video = document.getElementById("bgtrain");
+	    video.src = newstr;
 	  }
 	</script>
 	<body>
