@@ -13,30 +13,23 @@
         #content {
             position: absolute;
             top: 33%;
-            left: 5rem;
-            right: 50%;
-            transition: top 1s, height 1s ease-out;
+            left: 3rem;
+            right: 65%;
+            transition: top 1s, left 1s ease-out;
         }
         #content:hover {
-            top: 5rem;
-            height: 100%;
+            top: 2rem;
+			bottom: 2rem;
+			border-style: solid;
+			border-width: 2px;
+			border-color: black;
+			background-color: #e6f6e6;
         }
         h1 {
             font-size: 2rem;
             opacity: 1;
         }
-        h1:solid {
-            font-size: 2rem;
-            opacity: 0;
-            display: block;
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-
-        }
-        div:hover p {
+        #content:hover p {
             opacity: 1;
             transition: opacity 1s linear 1s;
         }
@@ -65,8 +58,9 @@
       </video>
       <div id=content>
           <h1>THIS IS A VIEW FROM A TRAIN.</h1>
-        <p>Oh man. Look at this footage. It's so raw. So elegant. So emotionally charged. Wow.
-        <a href="drake/index.html">Here</a> is the only other thing on this site.</p>
+        <p>If it isn't evident, this is a WIP.
+        <a href="drake/index.html">Here</a> is the only other thing on this site.
+		</p>
       </div>
     </body>
 </html>
