@@ -2,49 +2,7 @@
     <head>
         <title> OH MAN HE'S ON A TRAIN </title>
     </head>
-    <style type="text/css">
-        #bgtrain {
-            position: fixed;
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-        }
-        #content {
-            position: absolute;
-            top: 33%;
-            left: 3rem;
-            right: 65%;
-            transition: top 1s, left 1s ease-out;
-        }
-        #content:hover {
-            top: 2rem;
-			bottom: 2rem;
-			right: 2rem;
-			border-style: solid;
-			border-width: 2px;
-			border-color: black;
-			background-color: #e6f6e6;
-        }
-        h1 {
-            font-size: 2rem;
-            opacity: 1;
-        }
-        #content:hover p {
-            opacity: 1;
-            transition: opacity 1s linear 1s;
-        }
-        p {
-            font-size: 1rem;
-            opacity: 0;
-            transition: opacity 1s;
-        }
-        body {
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-        }
-    </style>
+	<link rel="stylesheet" type="text/css" href="style.css">
     <script type="text/javascript">
       window.onload = function() {
         var random = Math.floor(Math.random() * 60);
