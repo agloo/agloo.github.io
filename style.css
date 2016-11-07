@@ -7,36 +7,19 @@
 	}
 	#content {
 		left: 50%;
-		top: 50%;
-		width: 20rem;
-		height: 20rem;
-		transform: translate(-50%, -50%);
+		bottom: 20px;
 		position: absolute;
-		text-align: left;
-		transition: 1s
-	}
-	#content:hover {
-		border-style: solid;
-		border-width: 1px;
-		border-color: black;
-		background-color: #e6f6e6;
-		transition: 1s;
-	}
-	#ramble {
 		text-align: center;
-	}
-	#content:hover p {
-		opacity: 1;
-		transition: opacity 1s
+		transform: translate(-50%, -50%);
+		-webkit-transform: translate(-50%, -50%);
+		mix-blend-mode: dodge;
 	}
 	p {
 		font-size: 1rem;
 		overflow: hidden;
-		opacity: 0;
-		transition: opacity 1s;
 	}
 	.normal {
-		color: #555555;
+		color: black;
 	}
 	.secret {
 		color:black;
