@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<style>
+  body {
+    padding: 100px;
+    width: 1000px;
+    margin: auto;
+    text-align: left;
+    font-weight: 300;
+    font-family: 'Open Sans', sans-serif;
+    color: #121212;
+  }
+  h1, h2, h3, h4 {
+    font-family: 'Source Sans Pro', sans-serif;
+  }
+</style>
+<title>CS 184 Mesh Editor</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link href="https://fonts.googleapis.com/css?family=Open+Sans|Source+Sans+Pro" rel="stylesheet">
+</head>
+
+
+<body>
+
+<h1 align="middle">CS 184: Computer Graphics and Imaging, Spring 2017</h1>
+<h1 align="middle">Final Project Proposal: Particle-based VR smoke shooter</h1>
+<h2 align="middle">Anders Lewis and Kevin Royston</h2>
+
+<br><br>
+
+<div>
+
+
+<h2 align="middle">Title, Summary and Team Members</h2>
+<p>Team Members:</p>
+<ul style='none'>
+	<li>Anders Lewis</li>
+	<li>Kevin Royston</li>
+</ul>
+<p>
+We want to make a smoke particle simulation in virtual reality. This means it will have to run in real time and react to user input. In order to speed up development we will be using Unity.
+This was partially inspired because we both like the aesthetics of this  chrome experiment https://github.com/edankwan/The-Spirit and want to experiment with something stylistically similar.
+</p>
+
+<h2 align="middle">Problem Description</h2>
+<p><font color="gray">
+		Here you should provide the context for your idea. Describe the problem that you are trying to solve, why it is important, where it is challenging. Give us a general idea on how you are going to solve it.</font></p>
+We want to create a real-time vr smoke simulation where the user can see the smoke around them and interact with it/create it with the controllers. The virtual reality system of choice will be the HTC Vive. While we could build the entire program from scratch we are going to instead use Unity. Unity will provide a large number of speedups that will allow us to get something that runs in real time as well as allow us to complete development within the allotted timeframe. In our final report we will provide a detailed breakdown of what was done by Unity and what was done by us. We will be heavily relying on Unity for rendering, input, and VR support. Our main focus will be on creating the particle simulation. Unity has some basic particle effects but no fluids, you can purchase fluid packages that users have made however, so we know it is feasible to create within the engine. While our goal is to move most of the challenges to the particle simulation, I suspect plenty of challenges will arise from just trying to use the engine itself.
+<h2 align="middle">Goals and Deliverables</h2>
+<p><font color="gray">
+This is the most important part of your proposal. You should carefully think through what you are trying to accomplish, what results you are going for, and why you think you can accomplish those goals. For example:
+Since this is a graphics class you will likely define the kind of images you will create (e.g. including a photo of a new lighting effect you will simulate).
+If you are working on an interactive system, describe what demo you will create.
+Define how you will measure the quality / performance of your system (e.g. graphs showing speedup, or quantifying accuracy). It may not be possible to define precise target metrics at this time, but we encourage you to try.
+What questions do you plan to answer with your analysis?
+You should break this section into two parts: (1) what you plan to deliver, and (2) what you hope to deliver. In (1), describe what you believe you must accomplish to have a successful project and achieve the grade you expect (i.e. your baseline plan -- planning for some unexpected problems would make sense). In (2), describe what you hope to achieve if things go well and you get ahead of schedule (your aspirational plan).
+</font></p>
+<p>What we plan to acheive:</p>
+<ul style='none'>
+<li>An interactive real-time VR demo
+<li>Realistic (or visually pleasing) liverender of particle-based smoke simulator
+<li>Interactivity:
+<ul style='none'>
+<li>Ideally: Interactive VR simulation. User can move around the source of the smoke with the controllers, can hit buttons on the control to change parameters of the smoke such as thickness, color, speed, etc.
+<li>Backup: a GUI that allows a user to tweak parameters. Instead of VR, a tweakable web app similar in style to shadertoy and chrome experiments.
+</ul>
+<li>Initially we only plan to have very basic parameters for the user to edit, such as the position of the smoke source and whether or not it is on. 
+	</ul>
+<p>What we hope to acheive:</p>
+<ul style='none'>
+	<li>Additional parameters:</li>
+<ul style='none'>
+	<li>Phase change in materials (fluid simulation, viscous goo)
+	<li>Differing noise functions
+	<li>Color parameters
+</ul>
+	<li>Movable objects
+	<li>Semi-realistic airflow. When you wave the controllers around or move an object around it should push the particles around in a somewhat realistic fashion
+	</ul>
+
+<h2 align="middle">Schedule</h2>
+
+<p>Kevin:</p>
+<ul style='none'>
+<li>Week 1: Working VR scene in unity with the ability to track controllers (render spheres to represent them) and the ability to detect various inputs</li>
+<li>Week 2: Help hook particles up to the VR scene. They should be emitted from the controllers as they move</li>
+<li>Week 3: Add the ability to move objects around in the scene using the controllers or add the ability to push the smoke around by moving your controller around</li>
+<li>Week 4: Polish + Extra features(add ways to change parameters through controller input or the second/unimplemented option from week 3)</li>
+</ul>
+<p>Anders	:</p>
+<ul style='none'>
+	<li>Week 1: Become comfortable with Unity, Unity Shaders, and Unity Particles. Learn the limits and get a basic particle system in place</li>
+<li>Week 2: Preliminary particle implementation in place. Should be emitting particles from the controllerse</li>
+<li>Week 3: Extra Features + find ways to make the particles look nicere</li>
+<li>Week 4: Polish + Extra features(fluid types, extra parameters, different noise functions)e</li>
+</ul>
+<p>Together /summary:</p>
+<ul style='none'>
+	<li>Week 1: Initial prototyping/proof of concept work. From here we will know what we are working with and what exactly we can expect</li>
+<li>Week 2 (Checkpoint): The goal is to have some form of particles being emitted from the controllers heret</li>
+<li>Week 3: Improve the appearance of the smoke, potentially add more tweakable parameters or other ways to interact with the fluid in the scene time permittingt</li>
+<li>Week 4: Polish + Extra featurest</li>
+</ul>
+
+<h2 align="middle">Resources</h2>
+<font color="gray">
+List what resources, e.g. books, papers and/or online resources that are references for your project. List the computing platform, hardware and software resources that you will use for your project. You have a wide latitude here to use what you have access to, but be aware that you will have to support and trouble-shoot on your platform yourselves. If you are starting from an existing piece of code or system, describe and provide a pointer to it here.
+</font>
+<ul style='none'>
+	<li>Unity Game Engine</li>
+<ul style='none'>
+	<li>One of the most commonly used game engines in the industry. Provides VR support, physics, collisions, rendering, etc. In our case we will be using all the features that we can to make our lives easier, except when it comes to the actual fluid simulation. We will do the fluid simulation by hooking onto their existing shader and particle systems.</li>
+	<li>https://docs.unity3d.com/ScriptReference/</li>
+	<li>https://unity3d.com/learn/tutorials</li>
+</ul>
+	<li><p>http://www.simppa.fi/blog/the-new-particle/</p></li>
+	<li><p>https://github.com/edankwan/The-Spirit</p></li>
+</ul>
+
+
+</body>
+</html>
