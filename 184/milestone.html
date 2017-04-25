@@ -32,15 +32,18 @@
 <div>
 
 <h2 align="middle">Our Progress:</h2>
-<p>
+<p> We were advised against rendering our own particle system in VR, since the slowdown would be pretty large unless we circumvented Unity's rendering engine to render particles faster, which would be a lot of work reigning in frameworks before we even got to the fluid system. We're saying fluid system now because a lot of the work we found on smoke simulation essentially reduced to fluid simulation, which put one of our stretch goals of extending our sim to arbitrary fluid as a now-neccesity.
+</p>
+<p> We also did some research on fluid simulation and found that, by merit of their being in the zietgeist for a longer time, grid-based (also called Eulerian) fluid simulations have some great resources behind them, while we couldn't find anything as good for particle-based (also called Lagrangian) ones. What's more, we have more experience working with fragment shaders between us, and grid-based shaders work very well with fragment shaders.
+</p>
+<p> Since then, we've implemented a large custom pipeline of 7 shaders using openframeworks to solve the Navier-Stokes equations by finite analysis. As of now, we have a the full framework to update the fluid's vector field in accordance with the Navier-Stokes equations, and we're rendering the values of the vector field in lieu of dye.
+</p>
+<p> We've primarily worked from <a href=http://http.developer.nvidia.com/GPUGems/gpugems_ch38.html>this source</a> and we plan on getting to the 'smoke and clouds' section on the bottom of the page (which is adds an additional scalar field for temperature in order to simulate buoyancy) before we start adding bells and whistles.
 </p>
 
-<h2 align="middle">Our Code:</h2>
+<h2 align="middle">Presentation:</h2>
 <p>
-</p>
-
-<h2 align="middle">Visuals:</h2>
-<p>
+	<a href=https://docs.google.com/presentation/d/10WESG_Q3cy0ILEcoorlNmHY61naGdpvz6U0rmhCkCPA/edit?usp=sharing>Found here</a>
 </p>
 
 </body>
