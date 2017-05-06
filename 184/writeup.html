@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<style>
+  body {
+    padding: 100px;
+    width: 1000px;
+    margin: auto;
+    text-align: left;
+    font-weight: 300;
+    font-family: 'Open Sans', sans-serif;
+    color: #121212;
+  }
+  h1, h2, h3, h4 {
+    font-family: 'Source Sans Pro', sans-serif;
+  }
+</style>
+<title>CS 184 Final Project Writeup</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link href="https://fonts.googleapis.com/css?family=Open+Sans|Source+Sans+Pro" rel="stylesheet">
+</head>
+
+
+<body>
+
+<h1 align="middle">CS 184: Computer Graphics and Imaging, Spring 2017</h1>
+<h1 align="middle">Final Project Writeup: Smoke Shooter</h1>
+<h2 align="middle">Anders Lewis and Kevin Royston</h2>
+
+<br><br>
+
+<div>
+
+
+<h2 align="middle">Abstract</h2>
+<p>
+For our final project we created a real-time interactive 2D grid-based smoke and fluid simulator. In order to do this we created a custom shader pipeline that solves the Navier-stokes equations. The fluid simulation we created also includes gravity, temperature, and density in order to simulate smoke. In order to visualize the smoke and fluid we simulate injecting dye into the system. The user can add velocity, heat, or dye+density to the system as well as tweak a handful of variables using the mouse and keyboard. The user can also switch through different stages in the pipeline and see the individual stages of the simulation such as the velocity field, the pressure field, or the heat and density map. As an extra bonus we added a handful of noise filters at the end of the pipeline to achieve some stunning visual effects.
+</p>
+<h2 align="middle">Technical Approach</h2>
+<h3 align="middle">The Math: Simulation</h3>
+<p>Our project simulates a homogeneous, incompressible fluid using the Navier-Stokes equations as a vector field in a 2D cartesian grid, and also keeps track of several other scalar fields (e.g. Dye, density, temperature) in other FBOs.
+</p>
+<p> The Navier-Stokes equation for incompressible homogeneous fluids has the form:
+</p>
+<p>
+	<img src="CodeCogsEqn.gif">
+</p>
+<p> Here, <b>u</b> is the vector field, p is a scalar field representing pressure, rho is the fluid density, v is the viscosity, and F represents any other forces we want to add. Each term in the sum has a physical interpretation: The first is advection, or the way that velocity spreads throughout the liquid. The second is pressure, and the third is diffusion, which models a fluid's resistence to changing shape.
+</p>
+<p> Part of the equation is also the continuity equation, which requires that the divergence of the vector field is 0 at every time step.
+</p>
+	<p> Closed-form solutions to the Navier-Stokes equations are rare and usually restricted to contrived examples, but we can solve them incrementally with finite difference approximations. We use an implicit Euler method for advection, since explicit methods tend to explode and since implicit methods lend themselves much better to parallel computation.
+</p>
+<h3 align="middle">Translating the theory onto the GPU</h3>
+<p>Looing at the above equation, it's hard to see how to translate onto a GPU. We would like to turn the equation into the composition of several functions, so we can just apply them one by one in the rending pipeline.
+</p>
+<p> For advection, we can use implicit euler integration to look back one timestep and interpolate between adjacent grid cells to get a new velocity. The diffusion term is a Laplacian that we can can solve using any iterative algorithm to approximate the solutions of a system of linear equations. In general, we use Jacobi iterations to solve Laplacians in this project. Jacobi iteration is slower than some other solvers, but it's easier to implement.
+</p>
+<p> We also apply force in a Gaussian splat away from the mouse, along with a force in the Y direction from our smoke implementation, which I'll talk about later.
+</p>
+<p> Applying these 3 functions does update for 3 of the terms of the Navier-Stokes equations, but it doesn't account for the continuity equation, which requires that our field has no divergence. To remedy this, we use the Helmholtz-Hodge decomposition. The Helmholtz-Hodge decomposition states that any vector field on a region of space with a differentiable boundary can be decomposed into the sum of a vector field with no divergence that is parallel to that boundary and the gradient of a scalar field. This works well for our uses, since this means that if we subtract the gradient of our pressure field from the field we get from the functions in the preceding paragraphs, the result has zero divergence. To calculate the gradient of the pressure gradient, we again use Jacobi iteration in a similar vein to Diffusion.
+</p>
+<p> Thus we have four functions: one to advect velocity along the fluid, one using Jacobi iteration to account for viscous diffusion, one to add whatever extra forces we want, and one to project the first 3 results onto a divergence-free vector field.
+</p>
+<p> After getting through all of this daunting math and enforcing constraints on the boundaries of the screen, we have a working vector field. In to visualize it, we also advect a vector field of dye colors, along with scalar fields of density and temperature, using the vector field.
+</p>
+<p> The last step to simulating smoke is using our temperature and density fields to apply one more force to account for buoyancy. The intuition is that dense air should fall and hot air should rise, so our formula is simply to subtract the density of the air and to add the temperature, both scaled by tunable constants.
+</p>
+<h3 align="middle">Our implementation</h3>
+<p> Initially, we tried making our simulation on shadertoy, but we realized early on that we were going to need a lot more intermediate FBOs than shadertoy offers. We looked creating our own pipeline from scratch, at first using OpenGL but later using OpenFrameworks. Our pipeline is pretty much as described in the math section: we apply one shader for advection, one shader for diffusion NUM_ITER times, 3 shaders to introduce external forces, dye, smoke, and temperature, 2 shaders to calculate the pressure field, 1 shader to project our intermediate vector field onto its divergence-free component, 1 shader to enforce boundary conditions, and 1 shader to enforce buoyancy.
+</p>
+<p>
+ We kept a lot of FBOs around to visualize intermediate states for debugging, but without them it boils down to 3 that we need to keep per iteration: the velocity field u, the dye field that we're visualizing, and one more field that we put smoke and dye in.
+</p>
+<h2 align="middle">gifs</h2>
+<h2 align="middle">References</h2>
+<p><a href=http://developer.download.nvidia.com/books/HTML/gpugems/gpugems_ch38.html>GPU gems' excellent writeup on 2D fluid simulation</a>
+</p>
+<h2 align="middle">Contributions from each team member</h2>
+<p>
+	Anders: Math groking, some shaders, shader overlays, debugging.
+	Kevin: OpenFrameworks skeleton, some shaders, tweakable params, debugging.
+</p>
+<p>
+</p>
+
+</body>
+</html>
