@@ -72,6 +72,22 @@ For our final project we created a real-time interactive 2D grid-based smoke and
 <p>
  We kept a lot of FBOs around to visualize intermediate states for debugging, but without them it boils down to 3 that we need to keep per iteration: the velocity field u, the dye field that we're visualizing, and one more field that we put smoke and dye in.
 </p>
+We also added a bunch of tweakable parameters! A full list follows:
+<ul>
+	<li>Pause/Unpause</li>
+	<li>K (density scalar)</li>
+	<li>Sig (temperature scalar)</li>
+	<li>Number of Poisson iterations</li>
+	<li>Brush radius</li>
+	<li>Simulation speed</li>
+	<li>Dye rainbow color changing rate</li>
+	<li>How dense the spawned smoke is</li>
+	<li>How hot the spawned smoke is</li>
+	<li>How quickly things decay/fade to black</li>
+	<li>Rotate through noise shaders</li>
+	<li>Reset simulation</li>
+</ul>
+<p> Finally, we made a pulled a few shaders from the internet to overlay over the fluid for some cool efects. They're cited in the source code, but the idea is that we use the x and y of the fluid vector field as replacements for the indices into the shaders.</p>
 <h2 align="middle">gifs</h2>
 <h2 align="middle">References</h2>
 <p><a href=http://developer.download.nvidia.com/books/HTML/gpugems/gpugems_ch38.html>GPU gems' excellent writeup on 2D fluid simulation</a>
