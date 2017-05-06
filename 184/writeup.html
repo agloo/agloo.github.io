@@ -89,9 +89,46 @@ We also added a bunch of tweakable parameters! A full list follows:
 </ul>
 <p> Finally, we made a pulled a few shaders from the internet to overlay over the fluid for some cool efects. They're cited in the source code, but the idea is that we use the x and y of the fluid vector field as replacements for the indices into the shaders.</p>
 <h2 align="middle">Results</h2>
-<p align="middle">
-<video align="middle" width='400' height='200' controls autoplay> 
-	<source src="finalvid.mkv" type='video/x-matroska'</video>
+<div align="middle">
+  <table style="width=100%">
+    <tr>
+      <td>
+				<video align="middle" width='400' height='200' caption="Description of how it works. The volume is low, so turn up your speakers." controls autoplay> 
+					<source src="finalvid.mkv" type='video/mp4'</video>
+      </td>
+      <td>
+				<video align="middle" width='400' height='200' caption="Placing dye using left click." controls autoplay> 
+					<source src="vid1.mkv" type='video/mp4'</video>
+      </td>
+      <td>
+				<video align="middle" width='400' height='200' caption="Placing dye with gravity/density enabled." controls autoplay> 
+					<source src="vid3.mkv" type='video/mp4'</video>
+      </td>
+    </tr>
+    <br>
+  </table>
+</div>
+<div align="middle">
+  <table style="width=100%">
+    <tr>
+      <td>
+				<video align="middle" width='400' height='200' caption="Placing dye with heat, causing buoyancy. Note the artifacts: this is a product of odd GPU bugs and the presence of recording software." controls autoplay> 
+					<source src="vid5.mkv" type='video/mp4'</video>
+      </td>
+      <td>
+				<video align="middle" width='400' height='200' caption="No gravity, dye and velocity placed at the same time." controls autoplay> 
+					<source src="vid6.mkv" type='video/mp4'</video>
+      </td>
+      <td>
+				<video align="middle" width='400' height='200' caption="Larger brush size and faster decay rate." controls autoplay> 
+					<source src="vid7.mkv" type='video/mp4'</video>
+      </td>
+    </tr>
+    <br>
+  </table>
+</div>
+
+
 <h2 align="middle">References</h2>
 <p><a href=http://developer.download.nvidia.com/books/HTML/gpugems/gpugems_ch38.html>GPU gems' excellent writeup on 2D fluid simulation</a>
 </p>
