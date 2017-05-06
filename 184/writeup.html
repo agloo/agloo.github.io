@@ -42,8 +42,8 @@ For our final project we created a real-time interactive 2D grid-based smoke and
 </p>
 <p> The Navier-Stokes equation for incompressible homogeneous fluids has the form:
 </p>
-<p>
-	<img src="CodeCogsEqn.gif">
+<p align="middle">
+	<img align="middle" src="CodeCogsEqn.gif">
 </p>
 <p> Here, <b>u</b> is the vector field, p is a scalar field representing pressure, rho is the fluid density, v is the viscosity, and F represents any other forces we want to add. Each term in the sum has a physical interpretation: The first is advection, or the way that velocity spreads throughout the liquid. The second is pressure, and the third is diffusion, which models a fluid's resistence to changing shape.
 </p>
@@ -88,7 +88,10 @@ We also added a bunch of tweakable parameters! A full list follows:
 	<li>Reset simulation</li>
 </ul>
 <p> Finally, we made a pulled a few shaders from the internet to overlay over the fluid for some cool efects. They're cited in the source code, but the idea is that we use the x and y of the fluid vector field as replacements for the indices into the shaders.</p>
-<h2 align="middle">gifs</h2>
+<h2 align="middle">Results</h2>
+<p align="middle">
+<video align="middle" width='400' height='200' controls autoplay> 
+	<source src="finalvid.mkv" type='video/x-matroska'</video>
 <h2 align="middle">References</h2>
 <p><a href=http://developer.download.nvidia.com/books/HTML/gpugems/gpugems_ch38.html>GPU gems' excellent writeup on 2D fluid simulation</a>
 </p>
